@@ -1,46 +1,17 @@
+[{
+  "id":"001788fffe100491",
+  "internalipaddress":"192.168.2.23",
+  "macaddress":"00:17:88:10:04:91",
+  "name":"Philips Hue"
+},
 {
-  "name": "Philips hue",
-  "zigbeechannel": 11,
-  "bridgeid": "xxxxxxx",
-  "mac": "00:xx:88:xx:f3:xx",
-  "dhcp": false,
-  "ipaddress": "192.168.2.245",
-  "netmask": "255.255.255.0",
-  "gateway": "192.168.2.1",
-  "proxyaddress": "none",
-  "proxyport": 0,
-  "UTC": "2017-01-04T20:01:21",
-  "localtime": "2017-01-04T20:01:21",
-  "timezone": "Europe/London",
-  "modelid": "BSB002",
-  "datastoreversion": "59",
-  "swversion": "01036659",
-  "apiversion": "1.16.0",
-  "swupdate": {
-    "updatestate": 0,
-    "checkforupdate": false,
-    "devicetypes": {
-      "bridge": false,
-      "lights": [],
-      "sensors": []
-    },
-    "url": "",
-    "text": "",
-    "notify": false
-  },
-  "linkbutton": false,
-  "portalservices": true,
-  "portalconnection": "connected",
-  "portalstate": {
-    "signedon": true,
-    "incoming": true,
-    "outgoing": true,
-    "communication": "disconnected"
-  },
-  "factorynew": false,
-  "replacesbridgeid": "xxxxxxxxxxx",
-  "backup": {
-    "status": "idle",
-    "errorcode": 0
-  }
-}
+  "name": "test hue",
+"id":"001788fffe09a168",
+"internalipaddress":"192.168.88.252"
+},
+{
+"id":"001788fffe16c18f",
+"internalipaddress":"192.168.2.20",
+"macaddress":"00:17:88:16:c1:8f",
+"name":"Philips Hue"
+}]

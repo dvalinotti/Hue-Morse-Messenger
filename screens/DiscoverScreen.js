@@ -4,12 +4,16 @@ import {Layout, Text, Button} from "react-native-ui-kitten";
 import info from './info';
 import {AppRegistry} from "react-native-web";
 
-let RenderItem = (result) => (
-    <View key={result.key} >
-        <Text style={styles.itemName}>{result.item.name}</Text>
-        <Text style={styles.itemIp}>{result.item.ipaddress}</Text>
-    </View>
-);
+class RenderItem extends React.PureComponent {
+    render() {
+        return (
+            <View key={result.key} style={styles.listItem}>
+                <Text style={styles.itemName}>{result.item.name}</Text>
+                <Text style={styles.itemIp}>{result.item.internalipaddress}</Text>
+            </View>
+        );
+    }
+}
 
 export class DiscoverScreen extends React.Component{
     static navigationOptions = {
@@ -17,14 +21,15 @@ export class DiscoverScreen extends React.Component{
     };
     render() {
         const {navigate} = this.props.navigation;
-        const results = [info];
+        const results = info;
         return (
             <Layout style={styles.container}>
                 <Layout style={styles.bridgeList}>
-                    <FlatList data={results} renderItem={RenderItem} keyExtractor={(item, index) => `list-item-${index}`}/>
+                    <FlatList style={styles.list} data={results} renderItem={RenderItem} keyExtractor={(item, index) => `list-item-${index}`}/>
                 </Layout>
                 <Button style={styles.button} title={"Go"} onPress={() => navigate('Home', {})}>Go</Button>
             </Layout>
+
         );
     };
 }
@@ -58,6 +63,25 @@ const styles = StyleSheet.create({
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-start"
+    },
+    list: {
+        flex: 0,
+        flexGrow: 1,
+        width: 200,
+        marginTop: 10,
+        marginBottom: 10,
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 2,
+        borderTopColor: 'lightgray',
+        borderTopWidth: 1,
+    },
+    listItem: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 1,
+        borderTopColor: 'lightgray',
+        borderTopWidth: 1,
     }
 });
 

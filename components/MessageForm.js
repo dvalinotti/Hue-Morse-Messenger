@@ -2,6 +2,7 @@ import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {Layout, Text, Input, Button} from "react-native-ui-kitten";
 import {encodeMessage} from "../utils/MorseEncoder";
+import {discoverBridges} from "../utils/HueFunctions";
 
 export function MessageForm() {
     const [input, setInput] = React.useState("");
@@ -12,6 +13,9 @@ export function MessageForm() {
     }
 
     function onSubmit() {
+        discoverBridges()
+            .then((response) => console.log(response))
+            .catch((error) => console.error(error));
         setOutput(encodeMessage(input));
     }
 
