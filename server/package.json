@@ -1,0 +1,21 @@
+{
+  "name": "hue-morse-backend",
+  "version": "1.0.0",
+  "description": "backend server for Hue Morse Messenger",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "test"
+  },
+  "author": "Dan Valinotti",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "huejay": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
+}

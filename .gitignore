@@ -9,3 +9,6 @@ cleint/*.mobileprovision
 cleint/*.orig.*
 cleint/web-build/
 cleint/web-report/
+
+server/node_modules/**/*
+server/.vscode
