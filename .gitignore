@@ -13,3 +13,4 @@ cleint/web-report/
 server/node_modules/**/*
 server/.vscode
 server/test
+node_modules

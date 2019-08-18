@@ -2,26 +2,26 @@ let express = require('express');
 let huejay = require('huejay');
 let router = express.Router();
 let host = require('./discover').host;
-let client = new huejay.Client({
+global.hueClient = new huejay.Client({
     host: host,
     timeout: 15000
 });
 let user;
 
 router.post('/', (req, res) => {
-    user = new client.users.User;
+    user = new hueClient.users.User;
     user.deviceType = 'hue_morse_app';
 
-    client.users.create(user)
+    hueClient.users.create(user)
         .then((user) => {
             console.log(`New user created: ${user.username}`);
-            client.username = user.username;
+            hueClient.username = user.username;
             res.json({
                 username: user.username,
                 deviceType: user.deviceType,
                 createDate: user.createDate,
                 lastUsed: user.lastUsed,
-                client: client.config
+                hueClient: hueClient.config
             });
         })
         .catch((error) => {
@@ -39,5 +39,5 @@ router.post('/', (req, res) => {
 
 module.exports = {
     router: router,
-    client: client
+    hueClient: hueClient
 };

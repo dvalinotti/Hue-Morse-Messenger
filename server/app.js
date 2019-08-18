@@ -8,7 +8,8 @@ var indexRouter = require('./routes/index');
 var discoverRouter = require('./routes/discover').router;
 var regsiterRouter = require('./routes/register').router;
 var loginRouter = require('./routes/login');
-
+var groupsRouter = require('./routes/groups');
+var lightsRouter = require('./routes/lights');
 var app = express();
 
 // view engine setup
@@ -25,6 +26,8 @@ app.use('/', indexRouter);
 app.use('/discover', discoverRouter);
 app.use('/register', regsiterRouter);
 app.use('/login', loginRouter);
+app.use('/groups', groupsRouter);
+app.use('/lights', lightsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
