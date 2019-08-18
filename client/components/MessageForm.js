@@ -2,11 +2,16 @@ import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {Layout, Text, Input, Button} from "react-native-ui-kitten";
 import {encodeMessage} from "../utils/MorseEncoder";
-import {discoverBridges} from "../utils/HueFunctions";
+import {discoverBridges, configureBridge} from "../utils/HueFunctions";
 
-export function MessageForm() {
+export function MessageForm(props) {
     const [input, setInput] = React.useState("");
     const [output, setOutput] = React.useState("");
+    const [username, setUsername] = React.useState("");
+
+    configureBridge(props.bridge).then((response) => {
+        setUsername(response[0].username);
+    });
 
     function onChange(value) {
         setInput(value);
