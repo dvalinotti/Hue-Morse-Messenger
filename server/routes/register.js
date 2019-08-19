@@ -2,7 +2,8 @@ let express = require('express');
 let huejay = require('huejay');
 let router = express.Router();
 let host = require('./discover').host;
-let client = new huejay.Client({
+global.client = new huejay.Client({
+    username: 'test',
     host: host,
     timeout: 15000
 });
@@ -32,7 +33,6 @@ router.post('/', (req, res) => {
                     errorMessage: "Please press the link button and try again"
                 });
             }
-
             console.log(error.stack);
         });
 });

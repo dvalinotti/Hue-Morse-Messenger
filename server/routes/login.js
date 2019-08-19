@@ -4,7 +4,12 @@ let router = express.Router();
 let host = require('./register').host;
 
 router.post('/', (req, res) => {
-    let users = JSON.parse(req.client).users.get()
+    client.users.getAll().then((users) => {
+        for (let user of users) {
+            console.log(user);
+        }
+    }).catch((error) => console.log(error.stack));
+    let users = client.users.get()
         .then((user) => {
             if (user.username === req.username) {
                 console.log('Successfully authentciated user');
