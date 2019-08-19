@@ -8,9 +8,12 @@ export class MessengerScreen extends React.Component {
         title: "Morse Code Messenger"
     };
     render() {
+        const {navigation} = this.props;
+        const bridge = navigation.getParam('bridge', 'NULL');
+
         return (
             <Layout style={styles.container}>
-                <MessageForm />
+                <MessageForm bridge={bridge} />
             </Layout>
         )
     }
