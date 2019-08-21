@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {StyleSheet, View, FlatList, ListView} from 'react-native';
 import {Layout, Text, Button} from "react-native-ui-kitten";
-import info from './info';
 import {AppRegistry} from "react-native-web";
-import { discover, discoverBridges } from '../utils/HueFunctions';
+import {discoverBridges, configureBridge} from '../utils/HueFunctions';
 
 class RenderItem extends React.Component {
     render() {
@@ -22,17 +21,31 @@ export class DiscoverScreen extends React.Component {
 
         this.state = {
             loading: true,
-            bridgeList: []
+            bridgeList: [],
+            user: {},
         };
     }
 
     componentWillMount() {
         discoverBridges().then((results) => {
             this.setState({
-                loading: false,
-                bridgeList: results
+                bridgeList: results,
+                loading: false
             });
         });
+    }
+
+    selectBridge = () => {
+        console.log(this.state.bridgeList[0].internalipaddress);
+        configureBridge(this.state.bridgeList[0])
+            .then((user) => {
+                    const {navigate} = this.props.navigation;
+                    navigate('Link', {
+                        user: user
+                    });
+                }).catch((error) => {
+                console.log(error.stack);
+            })
     }
 
     static navigationOptions = {
@@ -50,7 +63,7 @@ export class DiscoverScreen extends React.Component {
                             <Text style={styles.bridgeIp}>{this.state.bridgeList[0].id}</Text>
                             <Text style={styles.bridgeId}>{this.state.bridgeList[0].internalipaddress}</Text>
                         </Layout>
-                        <Button style={styles.button} title={"Go"} onPress={() => navigate('Home', {bridge: this.state.bridgeList[0]})}>Connect</Button>
+                        <Button style={styles.button} title={"Go"} onPress={() => configureBridge(this.state.bridgeList[0].internalipaddress)}>Connect</Button>
                     </>
                 )}
             </Layout>

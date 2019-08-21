@@ -10,6 +10,8 @@ export class MessengerScreen extends React.Component {
     render() {
         const {navigation} = this.props;
         const bridge = navigation.getParam('bridge', 'NULL');
+        const user = navigation.getParam('user', 'NULL');
+        console.log(bridge, user);
 
         return (
             <Layout style={styles.container}>
