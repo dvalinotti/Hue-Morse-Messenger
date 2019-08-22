@@ -8,20 +8,19 @@ const discoverBridges = () => {
 }
 
 const configureBridge = (bridge) => {
-    return fetch('https://purple-insect-86.localtunnel.me/api', {
+    return fetch('https://light-badger-53.localtunnel.me/api', {
         method: 'POST',
         headers: {
             Accept: 'multipart/form-data',
             'Content-Type': 'multipart/form-data',
           },
         body: JSON.stringify({
-            devicetype: "hue_morse#iphone me"
+            devicetype: "fuck#iphone me"
         })})
         .then((results) => {
             return results.json();
         })
         .then((resultsJson) => {
-            console.log(resultsJson);
             return resultsJson;
     }).catch((error) => console.log(error));
 }

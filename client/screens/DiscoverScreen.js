@@ -36,16 +36,10 @@ export class DiscoverScreen extends React.Component {
     }
 
     selectBridge = () => {
-        console.log(this.state.bridgeList[0].internalipaddress);
-        configureBridge(this.state.bridgeList[0])
-            .then((user) => {
-                    const {navigate} = this.props.navigation;
-                    navigate('Link', {
-                        user: user
-                    });
-                }).catch((error) => {
-                console.log(error.stack);
-            })
+        const {navigate} = this.props.navigation;
+        navigate('Link', {
+            bridge: this.state.bridgeList[0]
+        });
     }
 
     static navigationOptions = {
@@ -63,7 +57,7 @@ export class DiscoverScreen extends React.Component {
                             <Text style={styles.bridgeIp}>{this.state.bridgeList[0].id}</Text>
                             <Text style={styles.bridgeId}>{this.state.bridgeList[0].internalipaddress}</Text>
                         </Layout>
-                        <Button style={styles.button} title={"Go"} onPress={() => configureBridge(this.state.bridgeList[0].internalipaddress)}>Connect</Button>
+                        <Button style={styles.button} title={"Go"} onPress={() => this.selectBridge()}>Connect</Button>
                     </>
                 )}
             </Layout>

@@ -7,25 +7,29 @@ import {discoverBridges, configureBridge} from "../utils/HueFunctions";
 export function MessageForm(props) {
     const [input, setInput] = React.useState("");
     const [output, setOutput] = React.useState("");
-    const [username, setUsername] = React.useState("");
+    console.log(props.bridge[0].success.username);
+    const [username, setUsername] = React.useState(props.bridge[0].success.username);
 
-    configureBridge(props.bridge).then((response) => {
-        setUsername(response[0].username);
-    });
+    // configureBridge(props.bridge).then((response) => {
+    //     setUsername(response[0].username);
+    // });
 
     function onChange(value) {
         setInput(value);
     }
 
     function onSubmit() {
-        discoverBridges()
-            .then((response) => console.log(response))
-            .catch((error) => console.error(error));
-        setOutput(encodeMessage(input));
+        // discoverBridges()
+        //     .then((response) => console.log(response))
+        //     .catch((error) => console.error(error));
+        // setOutput(encodeMessage(input));
     }
 
     return (
         <Layout style={styles.container}>
+            <Text style={styles.ipText}>
+                Username: {username}
+            </Text>
             <Text style={styles.formText}>
                 Input
             </Text>
@@ -53,6 +57,12 @@ const styles = StyleSheet.create({
     formText: {
         textAlign: 'left',
         fontSize: 16,
+        marginRight: 'auto'
+    },
+    ipText: {
+        fontSize: 14,
+        paddingBottom: 30,
+        color: 'lightgray'
     },
     inputContainer: {
         flexDirection: 'row',
