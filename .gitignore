@@ -1,14 +1,14 @@
 client/node_modules/**/*
 client/.expo/*
-cleint/npm-debug.*
-cleint/*.jks
-cleint/*.p8
-cleint/*.p12
-cleint/*.key
-cleint/*.mobileprovision
-cleint/*.orig.*
-cleint/web-build/
-cleint/web-report/
+client/npm-debug.*
+client/*.jks
+client/*.p8
+client/*.p12
+client/*.key
+client/*.mobileprovision
+client/*.orig.*
+client/web-build/
+client/web-report/
 client/android/
 client/ios/
 
