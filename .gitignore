@@ -9,8 +9,8 @@ client/*.mobileprovision
 client/*.orig.*
 client/web-build/
 client/web-report/
-client/android/
-client/ios/
+client/android/**/*
+client/ios/**/*
 
 server/node_modules/**/*
 server/.vscode
