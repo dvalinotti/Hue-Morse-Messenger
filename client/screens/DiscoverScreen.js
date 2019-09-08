@@ -2,7 +2,7 @@ import * as React from 'react';
 import {StyleSheet, View, FlatList, ListView} from 'react-native';
 import {Layout, Text, Button} from "react-native-ui-kitten";
 import {AppRegistry} from "react-native-web";
-import {discoverBridges, configureBridge} from '../utils/HueFunctions';
+import {discoverBridges} from '../utils/HueFunctions';
 
 class RenderItem extends React.Component {
     render() {
@@ -26,18 +26,20 @@ export class DiscoverScreen extends React.Component {
         };
     }
 
-    componentWillMount() {
+    async componentWillMount() {
         discoverBridges().then((results) => {
             this.setState({
                 bridgeList: results,
                 loading: false
             });
+        }).then(() => {
+            console.log("here");
         });
     }
 
     selectBridge = () => {
         const {navigate} = this.props.navigation;
-        navigate('Link', {
+        navigate('Home', {
             bridge: this.state.bridgeList[0]
         });
     }

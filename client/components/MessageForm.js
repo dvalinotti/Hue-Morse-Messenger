@@ -1,14 +1,38 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
+import {config} from '../Constants';
 import {Layout, Text, Input, Button} from "react-native-ui-kitten";
 import {encodeMessage} from "../utils/MorseEncoder";
-import {discoverBridges, configureBridge} from "../utils/HueFunctions";
+import {discoverBridges} from "../utils/HueFunctions";
+import graphql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
 export function MessageForm(props) {
     const [input, setInput] = React.useState("");
     const [output, setOutput] = React.useState("");
-    console.log(props.bridge[0].success.username);
-    const [username, setUsername] = React.useState(props.bridge[0].success.username);
+    const [username, setUsername] = React.useState(config.username);
+    const api = graphql`
+        query fetchAllRooms {
+          groups {
+            lights {
+            name
+            id
+            }
+          }
+        }
+    `;
+
+    const { loading, data, error } = useQuery(api);
+     
+    useEffect(() => {
+        if (loading) {
+            console.log('loading...');
+        } if (error) {
+            console.log(error);
+        } if (data !== undefined) {
+            console.log(data);
+        }
+    });
 
     // configureBridge(props.bridge).then((response) => {
     //     setUsername(response[0].username);
@@ -17,6 +41,10 @@ export function MessageForm(props) {
     function onChange(value) {
         setInput(value);
     }
+
+    // useEffect(() => {
+    //     getLights(username);
+    // })
 
     function onSubmit() {
         // discoverBridges()
@@ -27,9 +55,6 @@ export function MessageForm(props) {
 
     return (
         <Layout style={styles.container}>
-            <Text style={styles.ipText}>
-                Username: {username}
-            </Text>
             <Text style={styles.formText}>
                 Input
             </Text>

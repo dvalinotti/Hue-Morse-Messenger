@@ -27,22 +27,22 @@ export class ConnectScreen extends React.Component {
 
     componentWillMount() {
         const {navigation} = this.props;
-        configureBridge(navigation.getParam('bridge', 'NULL'))
-            .then((results) =>  results.json())
-            .then(resultsJson => this.setState({
-                username: resultsJson.success.username
-            }))
-            .catch((error) => console.log(error.stack));
+        // configureBridge(navigation.getParam('bridge', 'NULL'))
+        //     .then((results) =>  results.json())
+        //     .then(resultsJson => this.setState({
+        //         username: resultsJson.success.username
+        //     }))
+        //     .catch((error) => console.log(error.stack));
     }
 
     connect() {
         const {navigation} = this.props,
             {navigate} = this.props.navigation;
-        configureBridge(navigation.getParam('bridge', 'NULL'))
-            .then(resultsJson => {
-                navigate('Home', {bridge: resultsJson})
-            })
-            .catch((error) => console.log(error.stack));
+        // configureBridge(navigation.getParam('bridge', 'NULL'))
+        //     .then(resultsJson => {
+        //         navigate('Home', {bridge: resultsJson})
+        //     })
+        //     .catch((error) => console.log(error.stack));
     }
 
     render() {
